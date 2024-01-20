@@ -22,7 +22,7 @@ import work.my.portfolio.service.ShortnerClientService;
  * @author kinoshita daiki
  * @since 2023/11/07
  */
-@Path("/urlShortner")
+@Path("urlShortner")
 public class UrlShortnerWebResources {
 
 	@Inject
@@ -52,6 +52,7 @@ public class UrlShortnerWebResources {
 	 * 変換ボタン押下時の処理
 	 * 
 	 * @param longUrl 入力された長いURL
+	 * @param uriInfo URI情報
 	 * @return 出力フォーム
 	 */
 	@Produces(MediaType.TEXT_HTML)
@@ -61,5 +62,19 @@ public class UrlShortnerWebResources {
 			@Context UriInfo uriInfo) {
 		Shortner shortner = service.getShortnerByLongUrl(longUrl);
 		return UrlShortenerTempletes.urlShortenerOutput(shortner, uriInfo.getBaseUri().toString());
+	}
+
+	/**
+	 * 外部サービス用。URLを短縮する
+	 * 
+	 * @param longUrl 元のURL
+	 * @param uriInfo URI情報
+	 * @return 短縮されたURL
+	 */
+	@Path("external")
+	@POST
+	@Produces(MediaType.TEXT_PLAIN)
+	public String createShortUrlForExternalService(String longUrl, @Context UriInfo uriInfo) {
+		return uriInfo.getBaseUri().toString() + service.getShortnerByLongUrl(longUrl).shortUrl();
 	}
 }
