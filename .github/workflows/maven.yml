@@ -49,5 +49,9 @@ jobs:
           run: chmod +x mvnw
         - name: package
           run: ./mvnw package -Dquarkus.package.type=uber-jar --file pom.xml
-          
+        - name: Upload artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: quarkus
+            path: target/quarkus-app/quarkus-run.jar
       
