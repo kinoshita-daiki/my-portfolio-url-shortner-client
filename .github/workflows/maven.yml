@@ -48,8 +48,8 @@ jobs:
         - name: Permissison
           run: chmod +x mvnw
         - name: package
-          run: ./mvnw package -Dquarkus.package.type=uber-jar 
-        -  run: mkdir result && cp target/quarkus-app/quarkus-run.jar result
+          run: ./mvnw -B package -Dquarkus.package.type=uber-jar 
+        - run: mkdir result && cp target/quarkus-app/quarkus-run.jar result
         - name: Upload artifact
           uses: actions/upload-artifact@v2
           with:
