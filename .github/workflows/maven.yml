@@ -30,9 +30,9 @@ jobs:
     - name: Permissison
       run: chmod +x mvnw
     - name: Build
-      run: ./mvnw -B compile --file pom.xml
+      run: ./mvnw -B compile
     - name: Test
-      run: ./mvnw -B test --file pom.xml
+      run: ./mvnw -B test
       
   package:
       runs-on: ubuntu-latest
@@ -48,10 +48,10 @@ jobs:
         - name: Permissison
           run: chmod +x mvnw
         - name: package
-          run: ./mvnw package -Dquarkus.package.type=uber-jar --file pom.xml
+          run: ./mvnw package -Dquarkus.package.type=uber-jar
         - name: Upload artifact
           uses: actions/upload-artifact@v2
           with:
             name: quarkus
-            path: target/quarkus-app/quarkus-run.jar
+            path: target/quarkus-app
       
