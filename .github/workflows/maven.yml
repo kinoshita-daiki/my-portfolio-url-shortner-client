@@ -47,10 +47,10 @@ jobs:
             cache: maven
         - name: Permissison
           run: chmod +x mvnw
-        - run: ./mvnw -B package -Dquarkus.package.type=uber-jar 
-        - run: mkdir staging && cp target/quarkus-app/*.jar staging
+        - name: package jar
+          run: ./mvnw -B package -Dquarkus.package.type=uber-jar 
         - uses: actions/upload-artifact@v3
           with:
             name: Package
-            path: staging
+            path: target/*.jar
       
