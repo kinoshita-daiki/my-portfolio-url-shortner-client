@@ -33,6 +33,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }} # 秘密鍵の内容 -----BEGIN PRIVATE KEY-----と-----END PRIVATE KEY-----含める。cat id_rsa_~.pub >> authorized_keys設定も忘れずに
           port: ${{ secrets.SSH_PORT }} # ポート番号
           script: |
+            docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
             docker stop ${{ env.CONTAINET_NAME }}
             docker pull ${{ secrets.DOCKER_REPOSITORY_USER }}/${{ secrets.DOCKER_REPOSITORY_NAME }}:${{ env.TAG }}
             docker run --rm -d -p ${{ env.DOCKER_PORT }} --name ${{ env.CONTAINET_NAME }} ${{ secrets.DOCKER_REPOSITORY_USER }}/${{ secrets.DOCKER_REPOSITORY_NAME }}:${{ env.TAG }}
