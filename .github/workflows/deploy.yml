@@ -37,4 +37,4 @@ jobs:
             docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
             docker stop ${{ env.CONTAINET_NAME }}
             docker pull ${{ secrets.DOCKER_REPOSITORY_USER }}/${{ secrets.DOCKER_REPOSITORY_NAME }}:${{ env.TAG }}
-            docker run --rm -d -p -e ${{ env.PROPERTIES }} -p ${{ env.DOCKER_PORT }} --name ${{ env.CONTAINET_NAME }} ${{ secrets.DOCKER_REPOSITORY_USER }}/${{ secrets.DOCKER_REPOSITORY_NAME }}:${{ env.TAG }}
+            docker run --rm -d -e ${{ env.PROPERTIES }} -p ${{ env.DOCKER_PORT }} --name ${{ env.CONTAINET_NAME }} ${{ secrets.DOCKER_REPOSITORY_USER }}/${{ secrets.DOCKER_REPOSITORY_NAME }}:${{ env.TAG }}
