@@ -1,5 +1,8 @@
 package work.my.portfolio;
 
+import java.util.Optional;
+
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import io.quarkus.qute.CheckedTemplate;
@@ -28,6 +31,10 @@ public class UrlShortnerWebResources {
 	@Inject
 	@RestClient
 	private ShortnerClientService service;
+
+	@Inject
+	@ConfigProperty(name = "url.shortner.client.additional.path")
+	private Optional<String> clientPath;
 
 	@CheckedTemplate
 	private static class UrlShortenerTempletes {
@@ -61,7 +68,10 @@ public class UrlShortnerWebResources {
 			@FormParam("longUrl") String longUrl,
 			@Context UriInfo uriInfo) {
 		Shortner shortner = service.getShortnerByLongUrl(longUrl);
-		return UrlShortenerTempletes.urlShortenerOutput(shortner, uriInfo.getBaseUri().toString());
+		String uri = clientPath//
+				.map(c -> uriInfo.getBaseUri().toString() + c).orElseGet(() -> uriInfo.getBaseUri().toString());
+		return UrlShortenerTempletes.urlShortenerOutput(shortner,
+				uri);
 	}
 
 	/**
@@ -75,6 +85,9 @@ public class UrlShortnerWebResources {
 	@POST
 	@Produces(MediaType.TEXT_PLAIN)
 	public String createShortUrlForExternalService(String longUrl, @Context UriInfo uriInfo) {
-		return uriInfo.getBaseUri().toString() + service.getShortnerByLongUrl(longUrl).shortUrl();
+		String uri = clientPath.map(c -> uriInfo.getBaseUri().toString() + c)
+				.orElseGet(() -> uriInfo.getBaseUri().toString());
+		return uri
+				+ service.getShortnerByLongUrl(longUrl).shortUrl();
 	}
 }
