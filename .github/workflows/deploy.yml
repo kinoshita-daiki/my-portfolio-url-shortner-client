@@ -8,7 +8,6 @@ env:
   CONTAINET_NAME: url-shortner-client
   TAG: url-shortner-client_prod
   PROPERTIES: BACK_URL=${{ secrets.BACK_URL }}
-  PROFILE: PROFILE=prod
   CLIENT_PATH: CLIENT_PATH=us/
 
 jobs:
@@ -39,4 +38,4 @@ jobs:
             docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
             docker stop ${{ env.CONTAINET_NAME }}
             docker pull ${{ secrets.DOCKER_REPOSITORY_USER }}/${{ secrets.DOCKER_REPOSITORY_NAME }}:${{ env.TAG }}
-            docker run --rm -d -e ${{ env.PROPERTIES }} -e ${{ env.PROFILE }} -e ${{ env.CLIENT_PATH }} -p ${{ env.DOCKER_PORT }} --name ${{ env.CONTAINET_NAME }} ${{ secrets.DOCKER_REPOSITORY_USER }}/${{ secrets.DOCKER_REPOSITORY_NAME }}:${{ env.TAG }}
+            docker run --rm -d -e ${{ env.PROPERTIES }} -e ${{ env.CLIENT_PATH }} -p ${{ env.DOCKER_PORT }} --name ${{ env.CONTAINET_NAME }} ${{ secrets.DOCKER_REPOSITORY_USER }}/${{ secrets.DOCKER_REPOSITORY_NAME }}:${{ env.TAG }}
