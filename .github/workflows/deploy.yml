@@ -8,8 +8,8 @@ env:
   CONTAINET_NAME: url-shortner-client
   TAG: url-shortner-client_prod
   PROPERTIES: BACK_URL=${{ secrets.BACK_URL }}
-  PROFILE: prod
-  CLIENT_PATH: us/
+  PROFILE: PROFILE=prod
+  CLIENT_PATH: CLIENT_PATH=us/
 
 jobs:
   deploy:
