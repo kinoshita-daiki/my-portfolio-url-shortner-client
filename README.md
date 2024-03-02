@@ -2,6 +2,8 @@
 
 [![CI Status](https://github.com/kinoshita-daiki/my-portfolio-url-shortner-client/actions/workflows/maven.yml/badge.svg)](https://github.com/kinoshita-daiki/my-portfolio-url-shortner-client/actions?query=workflow%3ACI)
 
+[API Doc](https://kinoshita-daiki.github.io/my-portfolio-url-shortner-client/)
+
 ポートフォリオとして作成した、URL短縮サイトのクライアントサーバ側のリポジトリです。<br>
 バックエンドサーバ側は[こちらです](https://github.com/kinoshita-daiki/my-portfolio-url-shortner)
 
