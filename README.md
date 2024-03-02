@@ -1,6 +1,6 @@
-[![Deploy Status](https://github.com/kinoshita-daiki/my-portfolio-url-shortner-client/actions/workflows/deploy.yml/badge.svg)](https://github.com/kinoshita-daiki/my-portfolio-url-shortner-client/actions?query=workflow%3ADeploy)
-
 [![CI Status](https://github.com/kinoshita-daiki/my-portfolio-url-shortner-client/actions/workflows/maven.yml/badge.svg)](https://github.com/kinoshita-daiki/my-portfolio-url-shortner-client/actions?query=workflow%3ACI)
+
+[![Deploy Status](https://github.com/kinoshita-daiki/my-portfolio-url-shortner-client/actions/workflows/deploy.yml/badge.svg)](https://github.com/kinoshita-daiki/my-portfolio-url-shortner-client/actions?query=workflow%3ADeploy)
 
 [API Doc](https://kinoshita-daiki.github.io/my-portfolio-url-shortner-client/)
 
