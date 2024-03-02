@@ -36,7 +36,7 @@ public interface ShortnerClientService {
 	/**
 	 * 指定した短いURLに紐づいた短縮機を取得する
 	 * 
-	 * @param shortUrl 短いURL
+	 * @param shortUrlPath 短いURL
 	 * @return 短縮機
 	 */
 	@Produces(MediaType.APPLICATION_JSON)
